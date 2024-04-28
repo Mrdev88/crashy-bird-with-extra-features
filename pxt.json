@@ -1,5 +1,6 @@
 {
     "name": "Crashy Bird with extra features",
+    "version": "1.0.0",
     "description": "",
     "dependencies": {
         "core": "*",
