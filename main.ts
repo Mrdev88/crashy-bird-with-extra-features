@@ -7,10 +7,6 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
 input.onButtonPressed(Button.A, function () {
     bird.change(LedSpriteProperty.Y, -1)
 })
-input.onPinPressed(TouchPin.P2, function () {
-    record.startRecording(record.BlockingState.Blocking)
-    record.playAudio(record.BlockingState.Blocking)
-})
 input.onButtonPressed(Button.AB, function () {
     game.pause()
     basic.showString("Steps: " + steps)
@@ -20,13 +16,17 @@ input.onButtonPressed(Button.B, function () {
     bird.change(LedSpriteProperty.Y, 1)
 })
 input.onPinPressed(TouchPin.P1, function () {
-    music.play(music.stringPlayable("C D E F G A B C5 ", 120), music.PlaybackMode.UntilDone)
-    music.play(music.stringPlayable("C5 B A G F E D C ", 120), music.PlaybackMode.UntilDone)
+    record.startRecording(record.BlockingState.Blocking)
+    record.playAudio(record.BlockingState.Blocking)
 })
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+input.onGesture(Gesture.Shake, function () {
     game.pause()
     steps += 1
     game.resume()
+})
+input.onLogoEvent(TouchButtonEvent.Touched, function () {
+    music.play(music.stringPlayable("C D E F G A B C5 ", 120), music.PlaybackMode.UntilDone)
+    music.play(music.stringPlayable("C5 B A G F E D C ", 120), music.PlaybackMode.UntilDone)
 })
 let emptyObstacleY = 0
 let ticks = 0
