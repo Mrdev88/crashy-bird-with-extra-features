@@ -7,7 +7,8 @@
         "radio": "*",
         "microphone": "*",
         "datalogger": "*",
-        "audio-recording": "*"
+        "audio-recording": "*",
+        "neopixel": "github:microsoft/pxt-neopixel#v0.7.5"
     },
     "files": [
         "main.ts",

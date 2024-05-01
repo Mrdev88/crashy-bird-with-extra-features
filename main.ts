@@ -7,6 +7,15 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
 input.onButtonPressed(Button.A, function () {
     bird.change(LedSpriteProperty.Y, -1)
 })
+input.onPinPressed(TouchPin.P2, function () {
+    pins.setEvents(DigitalPin.P2, PinEventType.Edge)
+    for (let index2 = 0; index2 < 100000; index2++) {
+        strip.show()
+        strip.rotate(1)
+        basic.pause(100)
+    }
+    pins.setEvents(DigitalPin.P2, PinEventType.Touch)
+})
 input.onButtonPressed(Button.AB, function () {
     game.pause()
     basic.showString("Steps: " + steps)
@@ -32,7 +41,11 @@ let emptyObstacleY = 0
 let ticks = 0
 let steps = 0
 let bird: game.LedSprite = null
+let strip: neopixel.Strip = null
+strip = neopixel.create(DigitalPin.P2, 8, NeoPixelMode.RGB)
+strip.showRainbow(1, 360)
 record.setMicGain(record.AudioLevels.High)
+pins.setEvents(DigitalPin.P2, PinEventType.Touch)
 let index = 0
 let obstacles: game.LedSprite[] = []
 bird = game.createSprite(0, 2)
